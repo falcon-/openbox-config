@@ -1,0 +1,47 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
+
+# If you want to use XFCE config tools...
+#
+# xfce-mcs-manager &
+
+## Compositor
+(sleep 1s && compton -CGb) &
+
+## Sound Icon
+#(sleep 1s && volumeicon) &
+
+## Network applet
+#(sleep 3s && connman-ui-gtk) &
+
+##  battery icon in symbolic mode
+#(sleep 3 && cbatticon -i symbolic) &
+
+## turn off system beep
+xset b off &
+
+## Tilda terminal
+(sleep 1s && tilda) &
+
+##load xterm config
+xrdb ~/.Xresources &
+
+## wallpaper 
+sh ~/.fehbg &
+
+## synapse
+#(sleep 2s && synapse -s) &
+
+## dzen sys tray
+(sleep 1s && ~/.wm_scripts/./dzen2_panel) &
